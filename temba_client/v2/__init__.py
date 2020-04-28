@@ -185,13 +185,15 @@ class TembaClient(BaseCursorClient):
         """
         return self._get_query("flow_starts", self._build_params(uuid=uuid), FlowStart)
 
-    def get_globals(self):
+    def get_globals(self, key=None):
         """
         Gets all globals
 
+        :param key: global key
         :return: global query
         """
-        return self._get_query("globals", {}, Global)
+        params = self._build_params(key=key)
+        return self._get_query("globals", params, Global)
 
     def get_groups(self, uuid=None, name=None):
         """
